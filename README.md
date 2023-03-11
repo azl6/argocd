@@ -35,7 +35,10 @@ BOezKB1Q3OBebSJk # Password decoded! Use this to login in ArgoCD.
 
 The method I found was to change the `svc/argo-argocd-server` to NodePort, and add the **nodePort: 31111 to HTTP** and **nodePort: 32222** to HTTPS with `kubectl edit`. 
 
-Then, we can access the IP of any node on ports 31111 and 32222 and we'll see the ArgoCD login-page. Please use the password generated in the previous step to login.
+Then, we can access the IP of any node on ports 31111 and 32222 and we'll see the ArgoCD login-page. 
+
+**Login:** admin <br>
+**Password** Please use the password generated in the previous step to login.
 
 ![image](https://user-images.githubusercontent.com/80921933/224505122-d7e65162-cbe8-4ed3-a307-a30f62e12e14.png)
 
