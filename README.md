@@ -82,3 +82,36 @@ A project is a grouping of applications. We can define constraints for a project
 
 ![image](https://user-images.githubusercontent.com/80921933/224506624-3a9ce61c-be0f-489e-b03f-840d48662fcb.png)
 
+# Creating an Application via YAML file
+
+We can define ArgoCD Applications via YAML files. They represent a specification of the **source** (where the manifests are stores) and **destination** (in which cluster/namespace the manifests will be applied to)
+
+**application.yaml**
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: staticsite
+  namespace: argocd # App needs to be deployed in the argocd namespace
+spec: 
+  destination: 
+    namespace: staticsite # Namespace for the app
+    server: "https://kubernetes.default.svc" # Cluster the app will be deployed on
+  project: default 
+  source: 
+    path: ./ # Path in repository where the manifests for app are stored, in this case, root
+    repoURL: "https://github.com/azl6/manifests-for-argocd" # Repository with manifests
+    targetRevision: main # Branch
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true # Will create namespace staticsite if it doesn't exist
+```
+
+**Important info:** The `application.spec.destination.server` field can be retrieved by the command `argocd cluster list`. In general, https://kubernetes.default.svc will represent the cluster where ArgoCD is installed.
+
+After running `kubectl apply -f application.yaml -n argocd`, we need to synchronize the cluster and the repository manually.
+
+The ArgoCD UI will show our resources. We just need to click in "Synchronize" so ArgoCD will deploy the resources to our K8s cluster:
+
+![image](https://user-images.githubusercontent.com/80921933/224509717-e50a906f-a3e1-4060-a403-d3bbb9663df1.png)
