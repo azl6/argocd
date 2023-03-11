@@ -77,3 +77,8 @@ A project is a grouping of applications. We can define constraints for a project
 ![image](https://user-images.githubusercontent.com/80921933/221787115-727b51d8-8229-47bc-af0b-d8a688f26989.png)
 
 ![image](https://user-images.githubusercontent.com/80921933/221787283-412d2671-a9b4-459a-b20c-189800b42924.png)
+
+# Creating an Application via CLI
+
+![image](https://user-images.githubusercontent.com/80921933/224506624-3a9ce61c-be0f-489e-b03f-840d48662fcb.png)
+
