@@ -12,6 +12,27 @@ helm repo add argo https://argoproj.github.io/argo-helm
 helm install <NAME> argo/argo-cd --version 3.26.1
 ```
 
+# Getting the initial password
+
+```bash
+k get secrets -n argocd
+NAME                          TYPE                 DATA   AGE
+argocd-initial-admin-secret   Opaque               1      10m # This is the secret containing the password!
+# ...
+
+k get secret argocd-initial-admin-secret -n argocd -o yaml
+apiVersion: v1
+data:
+  password: Qk9lektCMVEzT0JlYlNKaw== # Password encoded in Base64. Please decode this value to get the password.
+kind: Secret
+ #...
+ 
+echo "Qk9lektCMVEzT0JlYlNKaw==" | base64 --decode; echo
+BOezKB1Q3OBebSJk # Password decoded! Use this to login in ArgoCD.
+
+```
+
+
 # What is an ArgoCD application
 
 An application in ArgoCD defines a **source** (VCS and manifests) and **destination** (cluster and namespace) to deploy Kubernetes resources
