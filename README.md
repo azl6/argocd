@@ -43,6 +43,16 @@ Then, we can access the IP of any node on ports 31111 and 32222 and we'll see th
 ![image](https://user-images.githubusercontent.com/80921933/224505122-d7e65162-cbe8-4ed3-a307-a30f62e12e14.png)
 
 
+# Logging in ArgoCD via CLI
+
+First, we need to download the Argocd CLI. Please, use the following link for reference: https://argo-cd.readthedocs.io/en/stable/cli_installation/
+
+After that, we can login:
+
+```bash
+argocd login <SERVER>
+```
+Note: \<SERVER> is \<IP>:\<PORT>
 
 # What is an ArgoCD application
 
