@@ -1,3 +1,17 @@
+# Installing ArgoCD
+
+Sources on K8s 1.26.1:
+
+Installing Helm: https://helm.sh/docs/intro/install/ <br>
+Installing ArgoCD: https://artifacthub.io/packages/helm/argo/argo-cd/3.26.1?modal=install
+
+```bash
+sudo yum install -y git
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+helm repo add argo https://argoproj.github.io/argo-helm
+helm install <NAME> argo/argo-cd --version 3.26.1
+```
+
 # What is an ArgoCD application
 
 An application in ArgoCD defines a **source** (VCS and manifests) and **destination** (cluster and namespace) to deploy Kubernetes resources
