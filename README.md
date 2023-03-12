@@ -115,3 +115,31 @@ After running `kubectl apply -f application.yaml -n argocd`, we need to synchron
 The ArgoCD UI will show our resources. We just need to click in "Synchronize" so ArgoCD will deploy the resources to our K8s cluster:
 
 ![image](https://user-images.githubusercontent.com/80921933/224509717-e50a906f-a3e1-4060-a403-d3bbb9663df1.png)
+
+# Detection of resources in sub directories
+
+Suppose we have defined a **source** for ArgoCD in a Git repository, however, it has subdirectores with other resources, and we also want these resources to be recognized by ArgoCD.
+
+We can use the `recurse: true` option of **application.spec.source.directory**:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: recursivechange
+  namespace: argocd
+spec:
+  project: default
+  source:
+    directory:
+      recurse: true # Configuration to discover resources in sub-directories
+    repoURL: https://github.com/azl6/argocd-example-apps
+    path: guestbook-with-sub-directories
+    targetRevision: master
+  destination:
+    namespace: recursive
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+```
