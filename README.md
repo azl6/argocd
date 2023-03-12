@@ -173,10 +173,16 @@ spec:
 
 After creating the project, we can reference it in the next applications that we create, with the **application.spec.project** key.
 
-# Project Roles
+# Project Roles and JWT tokens
 
-**Project Roles** can be created to provide JWT tokens with defined permissions
+**Project Roles** can be created to provide JWT tokens with defined permissions.
 
 Example of an **application.spec.roles**
 
 ![image](https://user-images.githubusercontent.com/80921933/224521198-9a8bed86-4a0e-4816-a707-2fa2a62cc684.png)
+
+To generate a token of this role, we use:
+
+```bash
+argocd proj role create-token PROJECT ROLE-NAME
+```
