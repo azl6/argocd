@@ -143,3 +143,30 @@ spec:
     syncOptions:
       - CreateNamespace=true
 ```
+
+# Creating an AppProject via YAML
+
+When we have a project, we can launch a bunch of **Application** resources inside of it.
+
+They also can be used to define constraints of what can be used as source/destination, which resources we can deploy, and which namespaces we can deploy on.
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: demo-project
+  namespace: argocd
+spec:
+  description: "Demo Project"
+  sourceRepos: ################## Defines accepted sources
+    - '*'
+  destinations:
+    - namespace: '*' ############ Defines accepted namespaces
+      server: '*' ############### Defines accepted clusters
+  clusterResourceWhiteList:
+    - group: '*' ################ Defines...
+      kind: '*' ################# Defines what kind of resources we can deploy
+    namespaceResourceWhiteList:
+      - group: '*' ############## Defines...
+        kind: '*' ############### Defines...
+```
