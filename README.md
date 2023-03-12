@@ -177,7 +177,7 @@ After creating the project, we can reference it in the next applications that we
 
 **Project Roles** can be created to provide JWT tokens with defined permissions.
 
-Example of an **application.spec.roles**
+Example of an **appproject.spec.roles**
 
 ![image](https://user-images.githubusercontent.com/80921933/224521198-9a8bed86-4a0e-4816-a707-2fa2a62cc684.png)
 
