@@ -175,7 +175,7 @@ After creating the project, we can reference it in the next applications that we
 
 # Project Roles and JWT tokens
 
-**Project Roles** can be created to provide JWT tokens with defined permissions.
+**Project Roles** can be created inside the **AppProject** resource to provide JWT tokens with defined permissions.
 
 Example of an **appproject.spec.roles**
 
@@ -192,3 +192,5 @@ To use the token in CLI, we pass the `--auth-token` flag
 ```bash
 argocd cluster list --auth-token TOKEN
 ```
+
+This is useful, for example, we we want to allow only the **sync**, but not the delete, get, etc... That way, when someone retrieves a token, it won't have access to the **delete** API call using that token.
