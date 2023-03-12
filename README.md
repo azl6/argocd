@@ -163,10 +163,10 @@ spec:
   destinations:
     - namespace: '*' ############ Defines accepted namespaces
       server: '*' ############### Defines accepted clusters
-  clusterResourceWhiteList:
+  clusterResourceWhitelist:
     - group: '*' ################ Defines...
       kind: '*' ################# Defines what kind of resources we can deploy
-  namespaceResourceWhiteList:
+  namespaceResourceWhitelist:
     - group: '*' ################ Defines...
       kind: '*' ################# Defines...
 ```
