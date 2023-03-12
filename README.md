@@ -186,3 +186,9 @@ To generate a token of this role, we use:
 ```bash
 argocd proj role create-token PROJECT ROLE-NAME
 ```
+
+To use the token in CLI, we pass the `--auth-token` flag
+
+```bash
+argocd cluster list --auth-token TOKEN
+```
