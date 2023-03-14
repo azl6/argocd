@@ -287,4 +287,34 @@ This is also achievable by the web-UI:
 
 ![image](https://user-images.githubusercontent.com/80921933/225112866-4cc49d37-b765-4240-9bb1-ded21254e052.png)
 
+# Selective Sync
+
+We might not want to sync every manifest of the application.
+
+Instead, we may want to sync **ONLY** resources that are out-of-sync.
+
+This can be achieved with the `ApplyOutOfSyncOnly` flag
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staticsite
+  namespace: argocd
+spec:
+  destination:
+    namespace: staticsite
+    server: "https://kubernetes.default.svc"
+  project: automated-sync
+  source:
+    path: app2
+    repoURL: "https://github.com/azl6/manifests-for-argocd"
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+```
+
+
 
