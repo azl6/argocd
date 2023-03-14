@@ -357,6 +357,8 @@ We can choose which repository version we'll pull our manifests from.
 
 ![image](https://user-images.githubusercontent.com/80921933/225136811-c9c90db8-3d49-471a-b046-0e94b2f82aaf.png)
 
+(Latest version can be represented by a *)
+
 This is determined by the `targetRevision` field, in the **Application** manifest:
 
 ```yaml
