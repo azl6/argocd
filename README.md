@@ -257,3 +257,29 @@ We can also enable Prune in the web-UI when doing manual sync
 
 ![image](https://user-images.githubusercontent.com/80921933/225110824-8de676b5-4d12-466e-80ca-be018420e670.png)
 
+# Automated Self Healing
+
+By default, ArgoCD will **not** trigger sync when the cluster current state deviates from desired state (e.g by a manual change)
+
+To correct the cluster state when a manual change happens, we can enable **automated self-healing**
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staticsite
+  namespace: argocd
+spec:
+  destination:
+    namespace: staticsite
+    server: "https://kubernetes.default.svc"
+  project: automated-sync
+  source:
+    path: app2
+    repoURL: "https://github.com/azl6/manifests-for-argocd"
+    targetRevision: main
+  syncPolicy:
+    automated: 
+      selfHeal: true # Cluster will self-heal when a manual change happens to the application
+```
+
