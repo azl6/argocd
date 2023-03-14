@@ -226,3 +226,34 @@ spec:
       - CreateNamespace=true
       - PruneLast=true
 ```
+
+# Automated Pruning
+
+By default, ArgoCD will not delete resources that got deleted in the Github repository.
+
+To enable this behaviour, we can set the flag `prune` to `true` in **application.spec.syncPolicy.automated.prune**
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staticsite
+  namespace: argocd
+spec:
+  destination:
+    namespace: staticsite
+    server: "https://kubernetes.default.svc"
+  project: automated-sync
+  source:
+    path: app2
+    repoURL: "https://github.com/azl6/manifests-for-argocd"
+    targetRevision: main
+  syncPolicy:
+    automated: 
+      prune: true # Enabling prune when manifests get deleted from Github
+```
+
+We can also enable Prune in the web-UI when doing manual sync
+
+![image](https://user-images.githubusercontent.com/80921933/225110824-8de676b5-4d12-466e-80ca-be018420e670.png)
+
