@@ -9,7 +9,7 @@ Installing ArgoCD: https://artifacthub.io/packages/helm/argo/argo-cd/3.26.1?moda
 sudo yum install -y git
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 helm repo add argo https://argoproj.github.io/argo-helm
-helm install <NAME> argo/argo-cd --version 3.26.1
+helm install <NAME> argo/argo-cd --version 3.26.1 --create-namespace --namespace argocd
 ```
 
 # Getting the initial password
