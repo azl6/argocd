@@ -351,3 +351,30 @@ metadata:
     argocd.argoproj.io/sync-options: Replace=true
 ```
 
+# Choosing repository version to use
+
+We can choose which repository version we'll pull our manifests from.
+
+![image](https://user-images.githubusercontent.com/80921933/225136811-c9c90db8-3d49-471a-b046-0e94b2f82aaf.png)
+
+This is determined by the `targetRevision` field, in the **Application** manifest:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staticsite
+  namespace: argocd
+spec:
+  destination:
+    namespace: staticsite
+    server: "https://kubernetes.default.svc"
+  project: automated-sync
+  source:
+    path: app2
+    repoURL: "https://github.com/azl6/manifests-for-argocd"
+    targetRevision: main ###################################### Here!
+  syncPolicy:
+    automated: {}
+```
+
