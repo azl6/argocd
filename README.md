@@ -229,7 +229,7 @@ spec:
 
 # Automated Pruning
 
-By default, ArgoCD will not delete resources that got deleted in the Github repository.
+By default, ArgoCD will not delete resources that got deleted in the Github repository (**Pruning is not enabled by default!**)
 
 To enable this behaviour, we can set the flag `prune` to `true` in **application.spec.syncPolicy.automated.prune**
 
