@@ -194,3 +194,7 @@ argocd cluster list --auth-token TOKEN
 ```
 
 This is useful, for example, we we want to allow only the **sync**, but not the delete, get, etc... That way, when someone retrieves a token, it won't have access to the **delete** API call using that token.
+
+# Using a private git repository as the source for manifests
+
+Classes 48 to 51 in the course.
