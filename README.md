@@ -197,4 +197,6 @@ This is useful, for example, we we want to allow only the **sync**, but not the 
 
 # Using a private git repository as the source for manifests
 
-Classes 48 to 51 in the course.
+Watch the Section 6 of the course.
+
+We can use **SSH** or **Generated Key** to confirm that we can access that repository.
