@@ -200,3 +200,29 @@ This is useful, for example, we we want to allow only the **sync**, but not the 
 Watch the Section 6 of the course.
 
 We can use **SSH** or **Generated Key** to confirm that we can access that repository.
+
+# Automated Sync
+
+We can define an ArgoCD application with automated sync enabled.
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staticsite
+  namespace: argocd
+spec:
+  destination:
+    namespace: staticsite
+    server: "https://kubernetes.default.svc"
+  project: automated-sync
+  source:
+    path: app2
+    repoURL: "https://github.com/azl6/manifests-for-argocd"
+    targetRevision: main
+  syncPolicy:
+    automated: {} # Declaring Automated Sync. ArgoCD will compare source with destination every 3 minutes by default, and update cluster if needed.
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+```
