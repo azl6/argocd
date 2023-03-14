@@ -316,5 +316,38 @@ spec:
       - ApplyOutOfSyncOnly=true
 ```
 
+# Replace resources on sync
 
+We might need to replace resources everytime a sync happens.
+
+This is achievable by the `Replace` flag in `syncOptions`:
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staticsite
+  namespace: argocd
+spec:
+  destination:
+    namespace: staticsite
+    server: "https://kubernetes.default.svc"
+  project: automated-sync
+  source:
+    path: app2
+    repoURL: "https://github.com/azl6/manifests-for-argocd"
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - Replace=true
+```
+
+This is also achievable at the resource-level, with the following annotation:
+
+```yaml
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+```
 
