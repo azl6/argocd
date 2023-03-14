@@ -380,3 +380,32 @@ spec:
     automated: {}
 ```
 
+# Ignore differences between repository and current state
+
+We can use the **application.spec.ignoreDifferences** key to ignore a certain field so its difference doesn't cause our application to be out of sync
+
+In the below example, we're ignoring the replica's number difference between repository and live cluster. This means that, even if the repository's number of replicas differs from the cluster's, we'll not see an **Out of sync** message.
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staticsite
+  namespace: argocd
+spec:
+  destination:
+    namespace: staticsite
+    server: "https://kubernetes.default.svc"
+  project: automated-sync
+  source:
+    path: app2
+    repoURL: "https://github.com/azl6/manifests-for-argocd"
+    targetRevision: main 
+  syncPolicy:
+    automated: {} 
+  ignoreDifferences: ############## Definition of the ignoreDifferences
+    - group: apps ################# ?
+      kind: Deployment ############ Kind of resource this ignoreDifferences will be applied to
+      jsonPointers:
+        - /spec/replicas ########## Field which difference will be ignored 
+```
