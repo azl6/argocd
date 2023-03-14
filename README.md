@@ -409,3 +409,27 @@ spec:
       jsonPointers:
         - /spec/replicas ########## Field which difference will be ignored 
 ```
+
+# Hooks
+
+O ArgoCD possui uma série de **Sync Phases**
+
+![image](https://user-images.githubusercontent.com/80921933/225153753-fb2b9928-f24f-4249-8459-ce9a3cad80ee.png)
+
+Podemos criar recursos para executar comandos em uma dessas etapas, seguindo o seguinte guia:
+
+![image](https://user-images.githubusercontent.com/80921933/225154265-fae4da14-7ee2-4fbd-82fe-c7b48944a93d.png)
+
+Podemos executar ações em cada uma dessas etapas:
+
+![image](https://user-images.githubusercontent.com/80921933/225153964-b8eb0a07-a1a8-455b-bfb1-13bfbdab46e4.png)
+
+E dependendo do resultado, deletamos o recurso utilizado na etapa:
+
+![image](https://user-images.githubusercontent.com/80921933/225154156-e6b33df8-a3c4-4aa7-96e9-63d55414223e.png)
+
+Como exemplo, temos uma Job que será rodado na fase de PreSync, e será deletado caso o comando seja bem sucedido.
+
+![image](https://user-images.githubusercontent.com/80921933/225154529-eec0941a-6299-474a-b807-268183accbea.png)
+
+
