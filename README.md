@@ -283,3 +283,8 @@ spec:
       selfHeal: true # Cluster will self-heal when a manual change happens to the application
 ```
 
+This is also achievable by the web-UI:
+
+![image](https://user-images.githubusercontent.com/80921933/225112866-4cc49d37-b765-4240-9bb1-ded21254e052.png)
+
+
