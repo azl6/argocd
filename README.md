@@ -432,4 +432,14 @@ Como exemplo, temos uma Job que será rodado na fase de PreSync, e será deletad
 
 ![image](https://user-images.githubusercontent.com/80921933/225154529-eec0941a-6299-474a-b807-268183accbea.png)
 
+# Sync Waves
+
+**Sync Waves** têm o objetivo de deployar recursos sequencialmente, de forma crescente de acordo com o número da wave (iniciando-se, por padrão, em 0)
+
+![image](https://user-images.githubusercontent.com/80921933/225175454-e1b401f0-864b-41e8-8a25-32f07c0b4bf4.png)
+
+![image](https://user-images.githubusercontent.com/80921933/225175669-bbc6ee40-4ab6-411a-b3ac-f2b9d34e9691.png)
+
+![image](https://user-images.githubusercontent.com/80921933/225175892-fd7ca228-131b-4bd4-b559-e43fdc3413eb.png)
+
 
