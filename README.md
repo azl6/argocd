@@ -197,9 +197,44 @@ This is useful, for example, we we want to allow only the **sync**, but not the 
 
 # Using a private git repository as the source for manifests
 
-Watch the Section 6 of the course.
+**Method 1:** Using username and password
 
-We can use **SSH** or **Generated Key** to confirm that we can access that repository.
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: private-repo
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  url: ###### Repo URL here!
+  username: # Account username 
+  password: # Account password OR GITHUB TOKEN!
+  tlsClientCertData: ############## THIS IS ONLY REQUIRED FOR SOME REPOS! IF IT'S NOT IN YOURS, JUST DELETE IT
+  tlsClientCertKey: ############### THIS IS ONLY REQUIRED FOR SOME REPOS! IF IT'S NOT IN YOURS, JUST DELETE IT
+```
+
+**Method 2:** Using SSH
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: private-repo
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  url: ###### Repo URL here!
+  sshPrivateKey: |
+  --------------BEGIN PRIVATE KEY--------------
+  # ...
+  --------------END PRIVATE KEY----------------
+```
+
 
 # Automated Sync
 
