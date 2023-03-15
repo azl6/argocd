@@ -410,7 +410,7 @@ spec:
         - /spec/replicas ########## Field which difference will be ignored 
 ```
 
-# Hooks
+# Sync Phases and Hooks
 
 ArgoCD has 3 **Sync Phases**, which are essentially the steps of when a Sync happens:
 
