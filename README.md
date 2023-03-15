@@ -412,29 +412,29 @@ spec:
 
 # Hooks
 
-O ArgoCD possui uma série de **Sync Phases**
+ArgoCD has 3 **Sync Phases**, which are essentially the steps of when a Sync happens:
 
 ![image](https://user-images.githubusercontent.com/80921933/225153753-fb2b9928-f24f-4249-8459-ce9a3cad80ee.png)
 
-Podemos criar recursos para executar comandos em uma dessas etapas, seguindo o seguinte guia:
+We can create **Jobs** to run in each **Sync Phase**:
 
 ![image](https://user-images.githubusercontent.com/80921933/225154265-fae4da14-7ee2-4fbd-82fe-c7b48944a93d.png)
 
-Podemos executar ações em cada uma dessas etapas:
+Available **Sync Phases**:
 
 ![image](https://user-images.githubusercontent.com/80921933/225153964-b8eb0a07-a1a8-455b-bfb1-13bfbdab46e4.png)
 
-E dependendo do resultado, deletamos o recurso utilizado na etapa:
+Depending on the result of the execution, we can delete the job:
 
 ![image](https://user-images.githubusercontent.com/80921933/225154156-e6b33df8-a3c4-4aa7-96e9-63d55414223e.png)
 
-Como exemplo, temos uma Job que será rodado na fase de PreSync, e será deletado caso o comando seja bem sucedido.
+In the below example, we have a **Job** that will run in the PreSync phase, and in case it suceeds, it will be deleted:
 
 ![image](https://user-images.githubusercontent.com/80921933/225154529-eec0941a-6299-474a-b807-268183accbea.png)
 
 # Sync Waves
 
-**Sync Waves** têm o objetivo de deployar recursos sequencialmente, de forma crescente de acordo com o número da wave (iniciando-se, por padrão, em 0)
+**Sync Waves** are used to deploy resources sequentially. Each **Sync Phase** can have many **Sync Waves**, which are executed increasingly by the given number:
 
 ![image](https://user-images.githubusercontent.com/80921933/225175454-e1b401f0-864b-41e8-8a25-32f07c0b4bf4.png)
 
