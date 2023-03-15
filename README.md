@@ -442,4 +442,12 @@ Como exemplo, temos uma Job que será rodado na fase de PreSync, e será deletad
 
 ![image](https://user-images.githubusercontent.com/80921933/225175892-fd7ca228-131b-4bd4-b559-e43fdc3413eb.png)
 
+# ApplicationSet
 
+An **ApplicationSet** resource is used to deploy the same application into multiple clusters:
+
+![image](https://user-images.githubusercontent.com/80921933/225179468-8e4e3d3f-9558-4b32-b1c0-35fb1346e73c.png)
+
+It uses the concept of **generators**, which works essentially just like a for_each in Terraform.
+
+There are many generator types and I haven't gone deep into them. If you ever need that topic regarding ApplicationSet, please visit section 12 of the course.
